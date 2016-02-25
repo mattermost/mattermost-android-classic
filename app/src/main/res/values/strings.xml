@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Mattermost</string>
+    <string name="app_user_agent">com.mattermost.android</string>
+    <string name="error_team_url_empty">Team URL cannot be empty</string>
+    <string name="error_team_url">The team does not exist</string>
+    <string name="error_mattermost_server">The address does not appear to be a Mattermost server</string>
+    <string name="login_sub_title">Email address for %s</string>
+    <string name="uploads_disabled">File uploads are disabled.</string>
+    <string name="choose_upload">Choose file for upload</string>
+    <string name="gcm_sender_id">400589284558</string>
+    <string name="loading">Loading...</string>
+    <string name="team_url"></string>
+    <string name="team_url_hint">E.g. https://server.com/teamname</string>
+</resources>
