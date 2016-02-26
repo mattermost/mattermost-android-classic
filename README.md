@@ -2,7 +2,7 @@
 
 Android application for use with Mattermost server 2.1 and higher (http://www.mattermost.org/download/) 
 
-> Note: The Mattermost Android App requires APIs currently on master and unavailable in Mattermost 2.0. To use this app on a stable build, please use Mattermsot 2.1, which releases on March 16, 2016. 
+> Note: The Mattermost Android App requires APIs being introduced in Mattermsot 2.1, which releases on March 16, 2016. You can test Android app functionality by joining the nightly builds server at https://pre-release.mattermost.com/core or by compiling [Mattermost platform](https://github.com/mattermost/platform) from the latest source code. 
 
 #### Supported Platforms 
 
