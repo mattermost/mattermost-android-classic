@@ -1,4 +1,4 @@
-# Mattermost Android Application 
+# Mattermost Android Application (Beta)
 
 Android application for use with Mattermost server 2.1 and higher (http://www.mattermost.org/download/) 
 
