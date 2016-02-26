@@ -155,7 +155,7 @@ public class MattermostService {
     }
 
     public boolean isAttached() {
-        return "true" == preferences.getString("AttachedId", "false");
+        return "true".equals(preferences.getString("AttachedId", "false"));
     }
 
     public void SetAttached() {

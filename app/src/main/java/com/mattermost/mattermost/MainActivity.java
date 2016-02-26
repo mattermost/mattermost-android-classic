@@ -18,6 +18,9 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceError;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.view.KeyEvent;
 
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 import com.mattermost.model.User;
@@ -29,6 +32,10 @@ import com.mattermost.service.Promise;
 import java.net.HttpCookie;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+import java.io.IOException;
+
 
 public class MainActivity extends WebViewActivity {
 
@@ -38,6 +45,7 @@ public class MainActivity extends WebViewActivity {
     String senderID;
     GoogleCloudMessaging gcm;
     ProgressDialog dialog;
+    long timeAway;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +59,9 @@ public class MainActivity extends WebViewActivity {
 
         initProgressBar(R.id.webViewProgress);
         initWebView(webView);
+    }
 
+    protected void loadRootView() {
         String url = service.getBaseUrl();
         if (!url.endsWith("/"))
             url += "/";
@@ -65,14 +75,63 @@ public class MainActivity extends WebViewActivity {
     }
 
     @Override
+    protected void onPause() {
+        Log.i("MainActivity", "paused");
+        webView.onPause();
+        webView.pauseTimers();
+        timeAway = System.currentTimeMillis();
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        Log.i("MainActivity", "resumed");
+        webView.onResume();
+        webView.resumeTimers();
+
+        if ((System.currentTimeMillis() - timeAway) > 1000 * 60 * 5) {
+            loadRootView();
+        }
+
+        super.onResume();
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            moveTaskToBack(true);
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
     protected void setWebViewClient(WebView view) {
         view.setWebViewClient(new WebViewClient() {
 
             @Override
             public void onPageFinished(WebView view, String url) {
                 dialog.hide();
-                Log.i("MainActivity", "onPageFinished while loading");
+                Log.i("onPageFinished", "onPageFinished while loading");
                 Log.i("onPageFinished", url);
+
+                if (url.equals("about:blank")) {
+                    AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
+                    alert.setTitle(R.string.error_retry);
+
+                    alert.setPositiveButton(R.string.error_logout, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                            MainActivity.this.onLogout();
+                        }
+                    });
+
+                    alert.setNegativeButton(R.string.error_refresh, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                            MainActivity.this.loadRootView();
+                        }
+                    });
+
+                    alert.show();
+                }
 
                 // Check to see if we need to attach the device Id
                 if (url.toLowerCase().endsWith("/channels/town-square")) {
@@ -84,9 +143,9 @@ public class MainActivity extends WebViewActivity {
                                     @Override
                                     public void onResult(Promise<User> promise) {
                                         if (promise.getError() != null) {
-                                            Log.e("MainActivity", promise.getError());
+                                            Log.e("AttachDeviceId", promise.getError());
                                         } else {
-                                            Log.i("MainActivity", "Attached device_id to session");
+                                            Log.i("AttachDeviceId", "Attached device_id to session");
                                             MattermostService.service.SetAttached();
                                         }
                                     }
@@ -95,22 +154,39 @@ public class MainActivity extends WebViewActivity {
                 }
             }
 
-            @Override
-            public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
-                Log.i("MainActivity", "onReceivedError while loading");
-                Log.i("Error", error.toString());
-            }
+//            @Override
+//            public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
+//                Log.e("onReceivedError", "onReceivedError while loading");
+//                Log.e("onReceivedError", error.getDescription().toString() + " " + error.getErrorCode());
+//            }
 
             @Override
-            public void onReceivedHttpError (WebView view, WebResourceRequest request, WebResourceResponse errorResponse) {
-                Log.i("MainActivity", "onReceivedHttpError while loading");
-                Log.i("Error", errorResponse.toString());
+            public void onReceivedHttpError(WebView view, WebResourceRequest request, WebResourceResponse errorResponse) {
+                Log.e("onReceivedHttpError", "onReceivedHttpError while loading");
+                StringBuilder total = new StringBuilder();
+
+                if (errorResponse.getData() != null) {
+                    BufferedReader r = new BufferedReader(new InputStreamReader(errorResponse.getData()));
+                    String line;
+                    try {
+                        while ((line = r.readLine()) != null) {
+                            total.append(line);
+                        }
+                    } catch (IOException e) {
+                        total.append("failed to read data");
+                    }
+                } else {
+                    total.append("no data");
+                }
+
+                Log.e("onReceivedHttpError", total.toString());
             }
 
             @Override
             public void onReceivedError (WebView view, int errorCode, String description, String failingUrl) {
-                Log.i("MainActivity", "onReceivedError while loading (d)");
-                Log.i("Error", description);
+                Log.e("onReceivedErrord", "onReceivedError while loading (d)");
+                Log.e("onReceivedErrord", errorCode + " " + description + " " + failingUrl);
+                webView.loadUrl("about:blank");
             }
 
             @Override
