@@ -24,6 +24,7 @@ To contribute to the process of testing the Mattermost Android App:
   2. See [example of Android App issue](https://github.com/mattermost/platform/issues/2272)
 5. When your testing is complete, open a GitHub Issue announcing your device has been verified
   1. Open an issue [using template for annoucing a device has been tested](https://github.com/mattermost/platform/issues/2275).
+  2. _(Optional)_ If you're comfortable making a pull request to [DEVICES.md](DEVICES.md) to add the update yourself, please feel free to do so instead of opening a GitHub issue. 
   
 # THANK YOU!
 We highly appreciate your help improving the quality of the Mattermost Android App for the entire community. 
