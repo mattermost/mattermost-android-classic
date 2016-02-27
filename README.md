@@ -6,7 +6,8 @@ Android application for use with Mattermost server 2.1 and higher (http://www.ma
 
 #### Supported Platforms 
 
-- Smartphones and tablets running Android 4.4.2+ 
+- See listing of verified Android devices on which this application has been manually tested
+- Minimum required Android operating system is 4.4.2+ 
 
 #### Requirements for Deployment 
 
