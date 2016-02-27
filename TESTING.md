@@ -11,7 +11,7 @@ To contribute to the process of testing the Mattermost Android App:
   - Enter https://pre-release.mattermost.com/core into the app and log in
 3. Go to the [Public Test Channel](https://pre-release.mattermost.com/core/channels/public-test-channel) and try the following: 
   1. Post the message with information on what you're testing, for example: `Testing Mattermost Android App 1.14 on Samsung Galaxy S6 edge+ running Android 5.1.1`
-  2. Reply to the post with `This is a comment including files` and upload five files including at least one image, one sound file and one video clip from your Android device.
+  2. Reply to the post by clicking on "**...**" then "**Reply**" with `This is a comment including files` and upload five (5) files including at least one image, one sound file and one video clip from your Android device.
 4. For any bugs found, please [file an issue report for each](http://www.mattermost.org/filing-issues/). Please include: 
   1. Please include: 
     - STEPS TO REPRODUCE
