@@ -9,4 +9,4 @@ The following chart summarizes Android devices on which Mattermost Android App r
 | 1.14 | Nexus 5, Android 6.0.1    | No issues  | [@crspeller](https://github.com/crspeller) | 2016-02-26 |  
 | 1.14 | Samsung Galaxy S6 edge+, Android 5.1.1 | [#2271](https://github.com/mattermost/platform/issues/2271) | [@it33](https://github.com/it33) | 2016-02-26 | 
 
-See [Android Testing document](https://github.com/mattermost/android/tree/test-process) to contribute to testing and verification of the Android device. 
+See [Android Testing document](TESTING.md) to contribute to testing and verification of the Android device. 
