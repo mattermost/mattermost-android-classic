@@ -5,7 +5,7 @@ To contribute to the process of testing the Mattermost Android App:
 1. If you haven't already, create an account on https://pre-release.mattermost.com/core
   - Set your username to be the same as your GitHub username
 2. Install the latest Mattermost Android App
-  - Download the latest Mattermost Android App from the Release tab as a `.apk` file
+  - Download the latest Mattermost Android App from the [Releases tab](https://github.com/mattermost/android/releases) as a `.apk` file
   - Remember the **VERSION** you downloaded
   - Install the `.apk` on your Android Phone by tapping on it 
   - Enter https://pre-release.mattermost.com/core into the app and log in
