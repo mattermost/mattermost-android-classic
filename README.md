@@ -1,8 +1,12 @@
 # Mattermost Android Application (Beta)
 
-Android application for use with Mattermost server 2.1 and higher (http://www.mattermost.org/download/) 
+Mattermost Android Application for use with Mattermost server 2.1 and higher (http://www.mattermost.org/download/).
 
 > Note: The Mattermost Android App requires APIs being introduced in Mattermsot 2.1, which releases on March 16, 2016. You can test Android app functionality by joining the nightly builds server at https://pre-release.mattermost.com/core or by compiling [Mattermost platform](https://github.com/mattermost/platform) from the latest source code. 
+
+#### Beta Testing
+
+- Please see [Mattermost Android App testing documentation](https://github.com/mattermost/android/blob/master/TESTING.md) for how to help test new releases.
 
 #### Supported Platforms 
 
