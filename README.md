@@ -6,13 +6,13 @@ Android application for use with Mattermost server 2.1 and higher (http://www.ma
 
 #### Supported Platforms 
 
-- See listing of verified Android devices on which this application has been manually tested
+- See [listing of verified Android devices](DEVICES.md) on which this application has been manually tested
 - Minimum required Android operating system is 4.4.2+ 
 
 #### Requirements for Deployment 
 
 1. Understanding of [Mattermost push notifications](http://docs.mattermost.com/administration/config-settings.html#push-notification-settings). 
-2. Experience compiling and deploying iOS applications to Google Play or as .apk files within companies 
+2. Experience compiling and deploying Android applications to Google Play or as .apk files within companies 
 3. An Google Developer account and appropriate Google devices to compile, test and deploy the application
 
 #### Installation 
