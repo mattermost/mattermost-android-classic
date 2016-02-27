@@ -1,4 +1,4 @@
-# Testing
+# Mattermost Android App Testing
 
 To contribute to the process of testing the Mattermost Android App: 
 
