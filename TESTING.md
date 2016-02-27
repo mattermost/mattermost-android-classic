@@ -16,16 +16,18 @@ To contribute to the process of testing the Mattermost Android App:
   - Delete a message
   - Upload five files at least one image, one sound file and one video clip 
 4. For any bugs found, please [file an issue report for each](http://www.mattermost.org/filing-issues/). Please include: 
-  1. The **DEVICE TYPE** and **OPERATING SYSTEM VERSION** you're using 
-  2. Steps to reproduce the issue 
-  3. The **VERSION** of Mattermost Android Application used
+  1. Please include: 
+    - STEPS TO REPRODUCE
+    - MATTERMOST ANDROID APP VERSION
+    - DEVICE TYPE 
+    - ANDROID OPERATING SYSTEM VERSION 
+  2. See [example of Android App issue](https://github.com/mattermost/platform/issues/2272)
 5. When your testing is complete, open a GitHub Issue announcing your device has been verified
-  1. Go to [https://github.com/mattermost/platform/issues](https://github.com/mattermost/platform/issues)
-  2. Click "New Issue"
-  3. Enter "Android App **VERSION** verified on **DEVICE TYPE** with Android **OPERATING SYSTEM VERSION**" 
-  4. If any bugs found, please include URLs to those bugs in the "Leave a comment" field
-  5. Click **Submit a new issue**. 
+  1. Open an issue [using template for annoucing a device has been tested](https://github.com/mattermost/platform/issues/2275).
   
-Your testing contribution will be listed in [Verified Devices](https://github.com/mattermost/android/blob/master/DEVICES.md).
+# THANK YOU!
+We highly appreciate your help improving the quality of the Mattermost Android App for the entire community. 
+
+Your testing contribution, including GitHub username, will be listed in [Verified Devices](https://github.com/mattermost/android/blob/master/DEVICES.md).
   
 
