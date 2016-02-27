@@ -1,4 +1,4 @@
-# Verified Platforms 
+# Verified Devices 
 
 The following chart summarizes Android devices on which Mattermost Android App releases have been tested: 
 
