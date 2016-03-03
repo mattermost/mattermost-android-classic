@@ -5,6 +5,7 @@ The following chart summarizes Android devices on which Mattermost Android App r
 | Version | Device & OS | Issues | Tester | Date | 
 |:--- |:--- |:--- |:--- |:--- |
 | 1.14 | Nexus 4, Android 5.1.1 | No issues | [@cifvts](https://github.com/cifvts) | 2016-03-03 | 
+| 1.14 | Xiaomi Redmi Note 2, Android 5.0.2 | No issues | [@vcazan](https://github.com/vcazan)  | 2016-02-29 |
 | 1.14 | Oneplus One (A0001), Android 6.0.1 (Cyanogenmod) | [#2272](https://github.com/mattermost/platform/issues/2272) | [@mtorromeo](https://github.com/mtorromeo) | 2016-02-27 |  
 | 1.14 | Samsung Galaxy Note 3   | No issues  | [@coreyhulen](https://github.com/coreyhulen) | 2016-02-26 | 
 | 1.14 | Nexus 5, Android 6.0.1    | No issues  | [@crspeller](https://github.com/crspeller) | 2016-02-26 |  
