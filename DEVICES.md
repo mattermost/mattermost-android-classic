@@ -4,6 +4,7 @@ The following chart summarizes Android devices on which Mattermost Android App r
 
 | Version | Device & OS | Issues | Tester | Date |
 |:--- |:--- |:--- |:--- |:--- |
+| 1.14 | Sony Xperia Z5 Compact, Android 5.1.1 | No issues  | [@reach3r](https://github.com/reach3r) | 2016-03-07 | 
 | 1.14 | Xperia Z3, Android 5.1.1   | No issues  | [@asaad](https://github.com/asaadmahmoodspin) | 2016-03-03 |
 | 1.14 | Nexus 4, Android 5.1.1 | No issues | [@cifvts](https://github.com/cifvts) | 2016-03-03 |
 | 1.14 | Xiaomi Redmi Note 2, Android 5.0.2 | No issues | [@vcazan](https://github.com/vcazan)  | 2016-02-29 |
