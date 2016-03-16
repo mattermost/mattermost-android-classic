@@ -13,7 +13,7 @@ android {
          * flat and white*/
         targetSdkVersion 20
         versionCode 210
-        versionName "2.1"
+        versionName "2.1.0"
     }
     buildTypes {
         release {
