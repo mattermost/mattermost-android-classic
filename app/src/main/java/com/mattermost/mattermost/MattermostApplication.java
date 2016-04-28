@@ -7,7 +7,7 @@ package com.mattermost.mattermost;
 import android.app.Application;
 import android.os.Handler;
 import android.util.Log;
-import android.webkit.CookieSyncManager;
+//import android.webkit.CookieSyncManager;
 
 import com.mattermost.service.MattermostService;
 
@@ -27,7 +27,7 @@ public class MattermostApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        CookieSyncManager.createInstance(this);
+  //      CookieSyncManager.createInstance(this);
         MattermostService.service = new MattermostService(this);
 
         handler = new Handler();

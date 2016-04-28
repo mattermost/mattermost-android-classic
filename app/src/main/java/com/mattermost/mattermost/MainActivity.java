@@ -60,6 +60,7 @@ public class MainActivity extends WebViewActivity {
             url += "/";
 
         if (MattermostService.service.GetLastPath().length() > 0) {
+            Log.i("loadRootView", "loading " + MattermostService.service.GetLastPath());
             url = MattermostService.service.GetLastPath();
         }
 
@@ -195,9 +196,9 @@ public class MainActivity extends WebViewActivity {
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 Uri uri = Uri.parse(url);
 
-                if (!isLoggedIn()) {
-                    return false;
-                }
+//                if (!isLoggedIn()) {
+//                    return false;
+//                }
 
                 if (!uri.getHost().equalsIgnoreCase(appUri.getHost())) {
                     openUrl(uri);
@@ -223,7 +224,7 @@ public class MainActivity extends WebViewActivity {
 
                 // Check to see if we need to attach the device Id
                 if (url.toLowerCase().contains("/channels/")) {
-                    if (isLoggedIn() && !MattermostService.service.isAttached()) {
+                    if (!MattermostService.service.isAttached()) {
                         Log.i("MainActivity", "Attempting to attach device id");
                         MattermostService.service.init(MattermostService.service.getBaseUrl());
                         Promise<User> p = MattermostService.service.attachDevice();
@@ -253,12 +254,12 @@ public class MainActivity extends WebViewActivity {
                     });
                 }
 
-                String baseUrl = "";
-                int i = service.getBaseUrl().lastIndexOf("/");
-                if (i != -1) {
-                    baseUrl = service.getBaseUrl().substring(0, i);
-
-                }
+//                String baseUrl = "";
+//                int i = service.getBaseUrl().lastIndexOf("/");
+//                if (i != -1) {
+//                    baseUrl = service.getBaseUrl().substring(0, i);
+//
+//                }
 
                 // If you're at the root then logout and so the select team view
 //                if (url.toLowerCase().endsWith(baseUrl + "/") || url.toLowerCase().endsWith(baseUrl)) {
@@ -280,21 +281,30 @@ public class MainActivity extends WebViewActivity {
         startActivity(intent);
     }
 
-    private boolean isLoggedIn() {
-        String baseUrl = service.getBaseUrl();
-        if (baseUrl == null) {
-            return false;
-        }
-
-        String cookies = CookieManager.getInstance().getCookie(baseUrl);
-        if (cookies == null)
-            return false;
-        if (cookies.trim().isEmpty())
-            return false;
-        if (!cookies.contains("MMAUTHTOKEN"))
-            return false;
-        return true;
-    }
+//    private boolean isLoggedIn() {
+//        String baseUrl = service.getBaseUrl();
+//        if (baseUrl == null) {
+//            return false;
+//        }
+//
+//        Log.i("WebResourceResponse", "HEREEEEE");
+//
+//        CookieManager m = CookieManager.getInstance();
+//        Log.i("WebResourceResponse", "HEREEEEE 2");
+//        Log.i("WebResourceResponse", baseUrl);
+//
+//
+//        String cookies = CookieManager.getInstance().getCookie(baseUrl);
+//        Log.i("WebResourceResponse", "HEREEEEE 3");
+//
+//        if (cookies == null)
+//            return false;
+//        if (cookies.trim().isEmpty())
+//            return false;
+//        if (!cookies.contains("MMAUTHTOKEN"))
+//            return false;
+//        return true;
+//    }
 
     @Override
     protected void onLogout() {
