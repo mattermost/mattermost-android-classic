@@ -5,8 +5,6 @@
 package com.mattermost.mattermost;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -41,10 +39,10 @@ public class LoginActivity extends AppChildActivity {
 
         loginSubTitle = (TextView) findViewById(R.id.login_sub_title);
 
-        loginSubTitle.setText(
-                getResources()
-                        .getString(R.string.login_sub_title,
-                                service.getTeam()));
+//        loginSubTitle.setText(
+//                getResources()
+//                        .getString(R.string.login_sub_title,
+//                                service.getTeam()));
 
         forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,31 +62,31 @@ public class LoginActivity extends AppChildActivity {
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(this, SelectTeamActivity.class);
+        Intent intent = new Intent(this, SelectServerActivity.class);
         startActivity(intent);
         finish();
     }
 
     private void doLogin() {
-        MattermostService.service.login(
-                emailAddress.getText().toString(),
-                password.getText().toString())
-                .then(new IResultListener<User>() {
-                    @Override
-                    public void onResult(Promise<User> promise) {
-                        if (promise.getError() != null) {
-                            errorMessage.setText(promise.getError());
-                        } else {
-                            errorMessage.setText("");
-
-                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            setResult(RESULT_OK);
-                            finishActivity(SelectTeamActivity.START_CODE);
-                            startActivity(intent);
-                            finish();
-                        }
-                    }
-                });
+//        MattermostService.service.login(
+//                emailAddress.getText().toString(),
+//                password.getText().toString())
+//                .then(new IResultListener<User>() {
+//                    @Override
+//                    public void onResult(Promise<User> promise) {
+//                        if (promise.getError() != null) {
+//                            errorMessage.setText(promise.getError());
+//                        } else {
+//                            errorMessage.setText("");
+//
+//                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+//                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                            setResult(RESULT_OK);
+//                            finishActivity(SelectServerActivity.START_CODE);
+//                            startActivity(intent);
+//                            finish();
+//                        }
+//                    }
+//                });
     }
 }

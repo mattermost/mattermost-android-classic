@@ -64,7 +64,7 @@
             android:configChanges="orientation|screenLayout|screenSize"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".SelectTeamActivity"
+            android:name=".SelectServerActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ForgotPasswordActivity"

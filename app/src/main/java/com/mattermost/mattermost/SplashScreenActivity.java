@@ -7,7 +7,6 @@ package com.mattermost.mattermost;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.webkit.CookieManager;
 
 import com.mattermost.gcm.RegistrationIntentService;
 
@@ -34,7 +33,7 @@ public class SplashScreenActivity extends AppActivity {
         startService(intent);
 
         boolean teamSet = service.getBaseUrl() != null;
-        intent = new Intent(this, teamSet ? MainActivity.class : SelectTeamActivity.class);
+        intent = new Intent(this, teamSet ? MainActivity.class : SelectServerActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         finish();

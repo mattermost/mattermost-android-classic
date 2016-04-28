@@ -42,23 +42,23 @@ public class ForgotPasswordActivity extends AppChildActivity {
     }
 
     private void doForgotPassword() {
-        MattermostService.service
-                .forgotPassword(emailAddress.getText().toString())
-                .then(new IResultListener<User>() {
-                    @Override
-                    public void onResult(Promise<User> promise) {
-                        if (promise.getError() != null) {
-                            errorMessage.setText(promise.getError());
-                        } else {
-                            errorMessage.setText("");
-                            AppActivity.alert("Email sent with link to reset password", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    finish();
-                                }
-                            });
-                        }
-                    }
-                });
+//        MattermostService.service
+//                .forgotPassword(emailAddress.getText().toString())
+//                .then(new IResultListener<User>() {
+//                    @Override
+//                    public void onResult(Promise<User> promise) {
+//                        if (promise.getError() != null) {
+//                            errorMessage.setText(promise.getError());
+//                        } else {
+//                            errorMessage.setText("");
+//                            AppActivity.alert("Email sent with link to reset password", new DialogInterface.OnClickListener() {
+//                                @Override
+//                                public void onClick(DialogInterface dialog, int which) {
+//                                    finish();
+//                                }
+//                            });
+//                        }
+//                    }
+//                });
     }
 }

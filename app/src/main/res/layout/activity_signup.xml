@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Team Name"
-            android:id="@+id/team_name"
+            android:id="@+id/server_name"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
             android:gravity="center" />
