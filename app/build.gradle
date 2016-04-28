@@ -6,13 +6,13 @@ android {
 
     defaultConfig {
         applicationId "com.mattermost.mattermost"
-        minSdkVersion 17
+        minSdkVersion 19
 
         /* If you want to change targetSdkVersion to higher version, please make sure you
          * convert application icon to meet desired lollipop guidelines, that is icon should be
          * flat and white*/
         targetSdkVersion 20
-        versionCode 301
+        versionCode 302
         versionName "3.0.0"
     }
     buildTypes {
