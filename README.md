@@ -1,6 +1,6 @@
 # Mattermost Android Application (Beta)
 
-Note: The Android app is being upgraded to work with the Mattermost 3.0 server. If you want the latest version compatible with the 2.x server, please compile from the 2.0 release branch.
+Note: The Android app is being upgraded to work with the Mattermost 3.0 server. If you want the latest version compatible with the 2.x server, please compile from the Android 1.14 release branch or use the app hosted on Google Play. 
 
 Mattermost Android Application for use with Mattermost server 2.1 and 2.2 (http://www.mattermost.org/download/).
 
