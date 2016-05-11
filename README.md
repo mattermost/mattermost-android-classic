@@ -32,3 +32,7 @@ Mattermost Android Application for use with Mattermost server 2.1 and 2.2 (http:
 #### Bugs, Feature Ideas and Troubleshooting 
 
 - Please see [documentation on filing Bugs, adding Feature Ideas and getting help Troubleshooting](http://docs.mattermost.com/process/community-systems.html).
+
+#### Known Issues
+
+- Native back buttons do not work
