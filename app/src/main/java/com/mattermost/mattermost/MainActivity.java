@@ -111,19 +111,23 @@ public class MainActivity extends WebViewActivity {
                 startActivityForResult(intent, SelectServerActivity.START_CODE);
                 finish();
                 return true;
-            }
-
-            if (webView.getUrl().endsWith("/login")) {
+            } else if (webView.getUrl().endsWith("/login")) {
                 MattermostService.service.logout();
 
                 Intent intent = new Intent(this, SelectServerActivity.class);
                 startActivityForResult(intent, SelectServerActivity.START_CODE);
                 finish();
                 return true;
+            } else if (webView.getUrl().endsWith("/select_team")) {
+                onLogout();
+                return true;
+            } else if (webView.canGoBack()) {
+                webView.goBack();
+                return true;
+            } else {
+                finish();
+                return true;
             }
-
-            moveTaskToBack(true);
-            return true;
         }
         return super.onKeyDown(keyCode, event);
     }
@@ -156,12 +160,6 @@ public class MainActivity extends WebViewActivity {
                     alert.show();
                 }
             }
-
-//            @Override
-//            public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
-//                Log.e("onReceivedError", "onReceivedError while loading");
-//                Log.e("onReceivedError", error.getDescription().toString() + " " + error.getErrorCode());
-//            }
 
             @Override
             public void onReceivedHttpError(WebView view, WebResourceRequest request, WebResourceResponse errorResponse) {
@@ -196,10 +194,6 @@ public class MainActivity extends WebViewActivity {
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 Uri uri = Uri.parse(url);
 
-//                if (!isLoggedIn()) {
-//                    return false;
-//                }
-
                 if (!uri.getHost().equalsIgnoreCase(appUri.getHost())) {
                     openUrl(uri);
                     return true;
@@ -220,7 +214,6 @@ public class MainActivity extends WebViewActivity {
 
             @Override
             public WebResourceResponse shouldInterceptRequest(WebView view, String url) {
-                //Log.i("WebResourceResponse", url.toLowerCase());
 
                 // Check to see if we need to attach the device Id
                 if (url.toLowerCase().contains("/channels/")) {
@@ -254,23 +247,6 @@ public class MainActivity extends WebViewActivity {
                     });
                 }
 
-//                String baseUrl = "";
-//                int i = service.getBaseUrl().lastIndexOf("/");
-//                if (i != -1) {
-//                    baseUrl = service.getBaseUrl().substring(0, i);
-//
-//                }
-
-                // If you're at the root then logout and so the select team view
-//                if (url.toLowerCase().endsWith(baseUrl + "/") || url.toLowerCase().endsWith(baseUrl)) {
-//                    MattermostApplication.handler.post(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            onLogout();
-//                        }
-//                    });
-//                }
-
                 return super.shouldInterceptRequest(view, url);
             }
         });
@@ -280,31 +256,6 @@ public class MainActivity extends WebViewActivity {
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
     }
-
-//    private boolean isLoggedIn() {
-//        String baseUrl = service.getBaseUrl();
-//        if (baseUrl == null) {
-//            return false;
-//        }
-//
-//        Log.i("WebResourceResponse", "HEREEEEE");
-//
-//        CookieManager m = CookieManager.getInstance();
-//        Log.i("WebResourceResponse", "HEREEEEE 2");
-//        Log.i("WebResourceResponse", baseUrl);
-//
-//
-//        String cookies = CookieManager.getInstance().getCookie(baseUrl);
-//        Log.i("WebResourceResponse", "HEREEEEE 3");
-//
-//        if (cookies == null)
-//            return false;
-//        if (cookies.trim().isEmpty())
-//            return false;
-//        if (!cookies.contains("MMAUTHTOKEN"))
-//            return false;
-//        return true;
-//    }
 
     @Override
     protected void onLogout() {
@@ -317,4 +268,6 @@ public class MainActivity extends WebViewActivity {
         startActivityForResult(intent, SelectServerActivity.START_CODE);
         finish();
     }
+
+
 }
