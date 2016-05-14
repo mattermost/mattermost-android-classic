@@ -104,7 +104,7 @@ public class MainActivity extends WebViewActivity {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             Log.i("Back", webView.getUrl());
-            if (webView.getUrl() == MattermostService.service.getBaseUrl()) {
+            if (webView.getUrl().equals(MattermostService.service.getBaseUrl())) {
                 MattermostService.service.logout();
 
                 Intent intent = new Intent(this, SelectServerActivity.class);
@@ -129,6 +129,7 @@ public class MainActivity extends WebViewActivity {
                 return true;
             }
         }
+
         return super.onKeyDown(keyCode, event);
     }
 
