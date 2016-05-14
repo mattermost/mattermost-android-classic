@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Mattermost</string>
     <string name="app_user_agent">com.mattermost.android</string>
+    <string name="welcome_text">Enter Mattermost Server URL</string>
     <string name="error_server_url_empty">Server URL cannot be empty</string>
     <string name="error_server_url">The server does not exist</string>
     <string name="error_mattermost_server">The address does not appear to be a Mattermost server</string>
@@ -13,5 +14,5 @@
     <string name="error_retry">You may be offline or the Mattermost server you are trying to connect to is experiencing problems.</string>
     <string name="error_refresh">Refresh</string>
     <string name="error_logout">Logout</string>
-    <string name="team_url_hint">E.g. https://server.com</string>
+    <string name="team_url_hint">e.g. https://server.com</string>
 </resources>
