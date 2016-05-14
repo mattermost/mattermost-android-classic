@@ -39,23 +39,11 @@ public class LoginActivity extends AppChildActivity {
 
         loginSubTitle = (TextView) findViewById(R.id.login_sub_title);
 
-//        loginSubTitle.setText(
-//                getResources()
-//                        .getString(R.string.login_sub_title,
-//                                service.getTeam()));
-
         forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
                 startActivity(intent);
-            }
-        });
-
-        proceed.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                doLogin();
             }
         });
     }
@@ -67,26 +55,4 @@ public class LoginActivity extends AppChildActivity {
         finish();
     }
 
-    private void doLogin() {
-//        MattermostService.service.login(
-//                emailAddress.getText().toString(),
-//                password.getText().toString())
-//                .then(new IResultListener<User>() {
-//                    @Override
-//                    public void onResult(Promise<User> promise) {
-//                        if (promise.getError() != null) {
-//                            errorMessage.setText(promise.getError());
-//                        } else {
-//                            errorMessage.setText("");
-//
-//                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-//                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//                            setResult(RESULT_OK);
-//                            finishActivity(SelectServerActivity.START_CODE);
-//                            startActivity(intent);
-//                            finish();
-//                        }
-//                    }
-//                });
-    }
 }
