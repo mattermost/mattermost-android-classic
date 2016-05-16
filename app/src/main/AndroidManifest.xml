@@ -66,15 +66,6 @@
         <activity
             android:name=".SelectServerActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".ForgotPasswordActivity"
-            android:theme="@style/AppTheme" />
-        <activity
-            android:name=".LoginActivity"
-            android:theme="@style/AppTheme" />
-        <activity android:name=".SignupActivity">
-        </activity>
-
 
         <receiver
             android:name="com.google.android.gms.gcm.GcmReceiver"

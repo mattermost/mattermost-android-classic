@@ -76,11 +76,11 @@ public class SelectServerActivity extends AppActivity {
                             errorMessage.setText(R.string.error_mattermost_server);
                             Log.e("Error", promise.getError());
                         } else {
-                                errorMessage.setText("");
-                                MattermostService.service.init(serverName.getText().toString());
-                                Intent intent = new Intent(SelectServerActivity.this, MainActivity.class);
-                                startActivity(intent);
-                                finish();
+                            errorMessage.setText("");
+                            MattermostService.service.init(serverName.getText().toString());
+                            Intent intent = new Intent(SelectServerActivity.this, MainActivity.class);
+                            startActivity(intent);
+                            finish();
                         }
                     }
                 });
