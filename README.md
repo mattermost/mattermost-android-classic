@@ -35,4 +35,4 @@ Mattermost Android Application for use with Mattermost server 2.1 and 2.2 (http:
 
 #### Known Issues
 
-- Native back buttons do not work
+- Back button does not work on Channel Navigation or User Settings views
