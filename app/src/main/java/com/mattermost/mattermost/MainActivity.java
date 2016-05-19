@@ -195,6 +195,26 @@ public class MainActivity extends WebViewActivity {
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 Uri uri = Uri.parse(url);
 
+                // Do not open in other browser if gitlab
+                if (uri.getPath().contains("/oauth/authorize")) {
+                    return false;
+                }
+
+                // Do not open in other browser if gitlab
+                if (uri.getPath().contains("/oauth/token")) {
+                    return false;
+                }
+
+                // Do not open in other browser if gitlab
+                if (uri.getPath().contains("/api/v3/user")) {
+                    return false;
+                }
+
+                // Do not open in other browser if gitlab
+                if (uri.getPath().contains("/users/sign_in")) {
+                    return false;
+                }
+
                 if (!uri.getHost().equalsIgnoreCase(appUri.getHost())) {
                     openUrl(uri);
                     return true;
