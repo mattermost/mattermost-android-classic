@@ -7,7 +7,10 @@ package com.mattermost.mattermost;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -23,6 +26,7 @@ public class SelectServerActivity extends AppActivity {
 
     EditText serverName;
     Button proceed;
+    String server;
     private TextView errorMessage;
 
     @Override
@@ -32,6 +36,8 @@ public class SelectServerActivity extends AppActivity {
         setContentView(R.layout.activity_select_server);
 
         serverName = (EditText) findViewById(R.id.server_name);
+        serverName.setSelection(serverName.getText().length());
+
         proceed = (Button) findViewById(R.id.proceed);
         errorMessage = (TextView) findViewById(R.id.error_message);
 
@@ -47,10 +53,21 @@ public class SelectServerActivity extends AppActivity {
                 doSelectServer();
             }
         });
+
+        serverName.setOnEditorActionListener(new EditText.OnEditorActionListener() {
+
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    proceed.performClick();
+                }
+                return false;
+            }
+        });
     }
 
     private void doSelectServer() {
-        String server = serverName.getText().toString();
+        server = serverName.getText().toString();
         if (server.isEmpty()) {
             errorMessage.setText(R.string.error_server_url_empty);
             return;
@@ -58,13 +75,15 @@ public class SelectServerActivity extends AppActivity {
             errorMessage.setText("");
         }
 
+        if (!server.contains("http")) {
+            server = "http://" + server;
+        }
         try {
             MattermostService.service.init(server);
         } catch (Exception e) {
             errorMessage.setText(R.string.error_mattermost_server);
             MattermostService.service.removeBaseUrl();
             Log.e("Error", e.toString());
-            return;
         }
 
         MattermostService.service.initialLoad()
@@ -77,7 +96,7 @@ public class SelectServerActivity extends AppActivity {
                             Log.e("Error", promise.getError());
                         } else {
                             errorMessage.setText("");
-                            MattermostService.service.init(serverName.getText().toString());
+                            MattermostService.service.init(server);
                             Intent intent = new Intent(SelectServerActivity.this, MainActivity.class);
                             startActivity(intent);
                             finish();

@@ -39,6 +39,7 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:hint="@string/team_url_hint"
             android:text="@string/team_url"
+            android:imeOptions="actionDone"
             android:inputType="textNoSuggestions" />
 
         <TextView
@@ -52,7 +53,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Proceed"
+            android:text="@string/proceed"
             android:id="@+id/proceed"
             android:layout_gravity="center_horizontal"
             android:layout_margin="10dp" />

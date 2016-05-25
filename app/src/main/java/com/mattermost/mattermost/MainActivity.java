@@ -289,6 +289,4 @@ public class MainActivity extends WebViewActivity {
         startActivityForResult(intent, SelectServerActivity.START_CODE);
         finish();
     }
-
-
 }
