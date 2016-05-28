@@ -4,7 +4,7 @@
     <string name="welcome_text">Enter Mattermost Server URL</string>
     <string name="error_server_url_empty">Server URL cannot be empty</string>
     <string name="error_server_url">The server does not exist</string>
-    <string name="error_mattermost_server">The address does not appear to be a Mattermost server</string>
+    <string name="error_mattermost_server">We could not connect to the Mattermost server or the server running in an incompatible version.</string>
     <string name="login_sub_title">Email address for %s</string>
     <string name="uploads_disabled">File uploads are disabled.</string>
     <string name="choose_upload">Choose file for upload</string>
