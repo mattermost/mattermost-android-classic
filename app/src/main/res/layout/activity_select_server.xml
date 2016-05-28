@@ -39,8 +39,8 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:hint="@string/team_url_hint"
             android:text="@string/team_url"
-            android:imeOptions="actionDone"
-            android:inputType="textNoSuggestions" />
+            android:imeOptions="actionGo"
+            android:inputType="textUri|textNoSuggestions" />
 
         <TextView
             android:layout_width="wrap_content"
