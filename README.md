@@ -1,8 +1,6 @@
 # Mattermost Android Application (Beta)
 
-Note: The Android app is being upgraded to work with the Mattermost 3.0 server. If you want the latest version compatible with the 2.x server, please compile from the Android 1.14 release branch or use the app hosted on Google Play. 
-
-Mattermost Android Application for use with Mattermost server 2.1 and 2.2 (http://www.mattermost.org/download/).
+Mattermost Android Application for use with Mattermost server 3.0 and higher (http://www.mattermost.org/download/).
 
 > Note: The Mattermost Android App requires APIs being introduced in Mattermost 2.1, which releases on March 16, 2016. You can test Android app functionality by joining the nightly builds server at https://pre-release.mattermost.com/core or by compiling [Mattermost platform](https://github.com/mattermost/platform) from the latest source code. 
 
@@ -23,7 +21,7 @@ Mattermost Android Application for use with Mattermost server 2.1 and 2.2 (http:
 
 #### Installation 
 
-1. Install [Mattermost 2.1 or higher](http://www.mattermost.org/download/).
+1. Install [Mattermost 3.0 or higher](http://www.mattermost.org/download/).
 2. Compile and deploy this Android application with your own private key to an .apk file distributed to your team. Please DO NOT deploy this app in the Google Play store. 
 3. Install [the latest stable release of the Mattermost Push Notifications Server](https://github.com/mattermost/push-proxy) using the private and public keys generated for your Android application from step 2.
 4. In the Mattermost Platform Server go to **System Console** > **Email Settings** > **Push Notifications Server** and add the web address of the Mattermost Push Notifications Server. Set **System Console** > **Send Push Notifications** to `true`.
