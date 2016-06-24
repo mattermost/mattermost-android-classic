@@ -201,6 +201,11 @@ public class MainActivity extends WebViewActivity {
                 }
 
                 // Do not open in other browser if gitlab
+                if (uri.getPath().toLowerCase().contains("/oauth2/")) {
+                    return false;
+                }
+
+                // Do not open in other browser if gitlab
                 if (uri.getPath().contains("/api/v3/user")) {
                     return false;
                 }
