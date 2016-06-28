@@ -22,10 +22,11 @@ You can download a compiled version of the latest release from [Google Play.](ht
 #### Installation 
 
 1. Install [Mattermost 3.0 or higher](http://www.mattermost.org/download/).
-2. Compile and deploy this Android application with your own private key to an .apk file distributed to your team. Please DO NOT deploy this app in the Google Play store. 
-3. Install [the latest stable release of the Mattermost Push Notifications Server](https://github.com/mattermost/push-proxy) using the private and public keys generated for your Android application from step 2.
-4. In the Mattermost Platform Server go to **System Console** > **Email Settings** > **Push Notifications Server** and add the web address of the Mattermost Push Notifications Server. Set **System Console** > **Send Push Notifications** to `true`.
-5. On your Android device, download and install your app and enter the **Team URL** and credentials based on a team set up on your Mattermost Platform Server.
+2. Update app/src/main/res/values/strings.xml and change the value of gcm_sender_id to your app id available [here](https://console.cloud.google.com).
+3. Compile and deploy this Android application with your own private key to an .apk file distributed to your team. Please DO NOT deploy this app in the Google Play store.
+4. Install [the latest stable release of the Mattermost Push Notifications Server](https://github.com/mattermost/push-proxy) using the private and public keys generated for your Android application from step 2.
+5. In the Mattermost Platform Server go to **System Console** > **Email Settings** > **Push Notifications Server** and add the web address of the Mattermost Push Notifications Server. Set **System Console** > **Send Push Notifications** to `true`.
+6. On your Android device, download and install your app and enter the **Team URL** and credentials based on a team set up on your Mattermost Platform Server.
 
 #### Bugs, Feature Ideas and Troubleshooting 
 
