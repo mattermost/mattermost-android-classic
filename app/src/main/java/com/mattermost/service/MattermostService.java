@@ -178,6 +178,10 @@ public class MattermostService {
         preferences.edit().putString("AttachedId", "true").commit();
     }
 
+    public void SetAttached(boolean attached) {
+        preferences.edit().putString("AttachedId", "" + attached).commit();
+    }
+
     public String GetLastPath() {
         return preferences.getString("LastPath", "");
     }
