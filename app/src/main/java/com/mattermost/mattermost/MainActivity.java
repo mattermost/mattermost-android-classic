@@ -258,6 +258,11 @@ public class MainActivity extends WebViewActivity {
                     }
                 }
 
+                // Check if deviceID is missing
+                if (url.toLowerCase().contains("/login")) {
+                    MattermostService.service.SetAttached(false);
+                }
+
                 // Check to see if the user was trying to logout
                 if (url.toLowerCase().endsWith("/logout")) {
                     MattermostApplication.handler.post(new Runnable() {

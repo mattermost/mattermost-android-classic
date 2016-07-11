@@ -7,9 +7,12 @@ package com.mattermost.mattermost;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.mattermost.model.InitialLoad;
@@ -21,6 +24,8 @@ public class SelectServerActivity extends AppActivity {
 
     public static final int START_CODE = 11;
 
+    String server;
+    Spinner serverPrefix;
     EditText serverName;
     Button proceed;
     private TextView errorMessage;
@@ -31,6 +36,7 @@ public class SelectServerActivity extends AppActivity {
 
         setContentView(R.layout.activity_select_server);
 
+        serverPrefix = (Spinner) findViewById(R.id.server_prefix);
         serverName = (EditText) findViewById(R.id.server_name);
         proceed = (Button) findViewById(R.id.proceed);
         errorMessage = (TextView) findViewById(R.id.error_message);
@@ -38,8 +44,28 @@ public class SelectServerActivity extends AppActivity {
         String baseUrl = MattermostService.service.getBaseUrl();
 
         if (baseUrl != null && baseUrl.length() > 0) {
+            String prefix = baseUrl.substring(0, baseUrl.lastIndexOf("://") + 3);
+            baseUrl = baseUrl.substring(prefix.length());
             serverName.setText(baseUrl);
+
+            if (prefix != null && prefix.length() > 0) {
+                if (prefix.equals("https://")) {
+                    serverPrefix.setSelection(0);
+                } else {
+                    serverPrefix.setSelection(1);
+                }
+            }
         }
+
+        serverName.setOnEditorActionListener(new EditText.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_GO) {
+                    proceed.performClick();
+                }
+                return false;
+            }
+        });
 
         proceed.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,7 +76,7 @@ public class SelectServerActivity extends AppActivity {
     }
 
     private void doSelectServer() {
-        String server = serverName.getText().toString();
+        server = serverPrefix.getSelectedItem().toString() + serverName.getText().toString();
         if (server.isEmpty()) {
             errorMessage.setText(R.string.error_server_url_empty);
             return;
@@ -77,7 +103,7 @@ public class SelectServerActivity extends AppActivity {
                             Log.e("Error", promise.getError());
                         } else {
                             errorMessage.setText("");
-                            MattermostService.service.init(serverName.getText().toString());
+                            MattermostService.service.init(server);
                             Intent intent = new Intent(SelectServerActivity.this, MainActivity.class);
                             startActivity(intent);
                             finish();

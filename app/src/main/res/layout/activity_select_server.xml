@@ -30,16 +30,50 @@
             android:layout_gravity="center_horizontal"
             android:layout_margin="10dp" />
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/server_name"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="10dp"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:hint="@string/team_url_hint"
-            android:text="@string/team_url"
-            android:inputType="textNoSuggestions" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="0.7">
+
+                <Spinner
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:id="@+id/server_prefix"
+                    android:layout_gravity="center_horizontal"
+                    android:textAppearance="?android:attr/textAppearanceListItemSmall"
+                    android:entries="@array/server_prefixs"
+                    />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_weight="0.3"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent">
+
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/server_name"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="10dp"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:hint="@string/team_url_hint"
+                    android:text="@string/team_url"
+                    android:imeOptions="actionGo"
+                    android:inputType="textUri|textNoSuggestions" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
@@ -52,7 +86,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Proceed"
+            android:text="@string/select_server_button"
             android:id="@+id/proceed"
             android:layout_gravity="center_horizontal"
             android:layout_margin="10dp" />
