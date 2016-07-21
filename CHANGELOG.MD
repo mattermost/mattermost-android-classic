@@ -1,5 +1,26 @@
 # Mattermost Android Application Changelog
 
+## Release v3.2.0  
+
+Released 2016-07-16
+
+### Improvements
+- Changed colors on login page to blue
+- Added a dropdown selector on the login page for https:// or http://
+- Changed the server selection field on the login page to have a URL type, to take advantage of the Android keyboard 
+
+### Bug Fixes
+- When a session ends or is revoked, push notifications should now start sending again when the user logs back in
+- Fixed an issue with icon rendering poorly on some devices
+
+### Contributors
+
+Many thanks to all our contributors. In alphabetical order:
+
+- [coreyhulen](https://github.com/coreyhulen)
+- [DavidLu1997](https://github.com/DavidLu1997)
+- [whites11](https://github.com/whites11)
+
 ## Release v3.1.0  
 
 Released 2016-06-16
