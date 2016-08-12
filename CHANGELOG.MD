@@ -1,5 +1,24 @@
 # Mattermost Android Application Changelog
 
+## Release v3.3.0  
+
+Released 2016-08-16
+
+### Improvements
+- Enter key now creates a new line instead of sending the message.
+- Links added to the mobile apps in the welcome email, tutorial, and main menu.
+- Landing page added that informs users of the mobile app when they access the site on a mobile web browser.
+- Permalinks are now available on mobile.
+- Clicking on the ... menu when in the right-hand sidebar view is now easier.
+- Auto-complete enabled for "from:" and "in:".
+
+### Contributors
+
+Many thanks to all our contributors. In alphabetical order:
+
+- [coreyhulen](https://github.com/coreyhulen)
+- [lfbrock](https://github.com/lfbrock)
+
 ## Release v3.2.0  
 
 Released 2016-07-16
