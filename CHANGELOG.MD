@@ -17,7 +17,8 @@ Released 2016-08-16
 Many thanks to all our contributors. In alphabetical order:
 
 - [coreyhulen](https://github.com/coreyhulen)
-- [lfbrock](https://github.com/lfbrock)
+- [macdabby](https://github.com/macdabby)
+- [jasonblais](https://github.com/jasonblais)
 
 ## Release v3.2.0  
 
