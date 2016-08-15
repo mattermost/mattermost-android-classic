@@ -6,8 +6,8 @@ Released 2016-08-16
 
 ### Improvements
 - Enter key now creates a new line instead of sending the message.
-- Links added to the mobile apps in the welcome email, tutorial, and main menu.
-- Landing page added that informs users of the mobile app when they access the site on a mobile web browser.
+- Made the mobile apps easier to discover by adding download links to the welcome email, tutorial, and main menu.
+- Added a landing page that informs users of the mobile app when they access the site on a mobile web browser.
 - Permalinks are now available on mobile.
 - Clicking on the ... menu when in the right-hand sidebar view is now easier.
 - Auto-complete enabled for "from:" and "in:".
