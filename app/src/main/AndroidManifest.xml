@@ -79,6 +79,11 @@
             </intent-filter>
         </receiver>
 
+        <receiver
+            android:name="com.mattermost.gcm.NotificationDismissReceiver"
+            android:exported="false" >
+        </receiver>
+
         <service
             android:name="com.mattermost.gcm.GcmMessageHandler"
             android:exported="false">
