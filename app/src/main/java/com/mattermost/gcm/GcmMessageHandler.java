@@ -35,7 +35,7 @@ public class GcmMessageHandler extends GcmListenerService {
             cancelNotification(data.getString("channel_id"));
         } else {
             channelIdToNotification.put(data.getString("channel_id"), data);
-            createNotification();
+            createNotification(true);
         }
         super.onMessageReceived(from, data);
     }
@@ -53,14 +53,17 @@ public class GcmMessageHandler extends GcmListenerService {
         super.onSendError(msgId, error);
     }
 
-    private void createNotification() {
+    private void createNotification(boolean doAlert) {
         Context context = getBaseContext();
 
         int defaults = 0;
         defaults = defaults | Notification.DEFAULT_LIGHTS
-                | Notification.DEFAULT_VIBRATE
-                | Notification.DEFAULT_SOUND
                 | Notification.FLAG_AUTO_CANCEL;
+
+        if (doAlert) {
+            defaults = defaults | Notification.DEFAULT_VIBRATE
+                    | Notification.DEFAULT_SOUND;
+        }
 
         Intent notificationIntent = new Intent(context, SplashScreenActivity.class);
         notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
@@ -112,9 +115,9 @@ public class GcmMessageHandler extends GcmListenerService {
     private void cancelNotification(String channelId) {
         if (!channelIdToNotification.containsKey(channelId)) {
             return;
-        }
+    }
 
         channelIdToNotification.remove(channelId);
-        createNotification();
+        createNotification(false);
     }
 }
