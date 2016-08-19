@@ -196,12 +196,12 @@ public class MainActivity extends WebViewActivity {
                 Uri uri = Uri.parse(url);
 
                 // Do not open in other browser if gitlab
-                if (uri.getPath().contains("/oauth/authorize")) {
+                if (uri.getPath().toLowerCase().contains("/oauth/")) {
                     return false;
                 }
 
                 // Do not open in other browser if gitlab
-                if (uri.getPath().contains("/oauth/token")) {
+                if (uri.getPath().toLowerCase().contains("/oauth2/")) {
                     return false;
                 }
 
@@ -212,6 +212,16 @@ public class MainActivity extends WebViewActivity {
 
                 // Do not open in other browser if gitlab
                 if (uri.getPath().contains("/users/sign_in")) {
+                    return false;
+                }
+
+                // Do not open in other browser if gitlab
+                if (uri.getPath().contains("/users/auth")) {
+                    return false;
+                }
+
+                // Do not open in other browser if gitlab
+                if (uri.getPath().contains("/adfs")) {
                     return false;
                 }
 
