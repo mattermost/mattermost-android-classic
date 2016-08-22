@@ -215,6 +215,36 @@ public class MainActivity extends WebViewActivity {
                     return false;
                 }
 
+                // Do not open in other browser if google
+                if (uri.getPath().contains("/oauth2/v2/auth")) {
+                    return false;
+                }
+
+                // Do not open in other browser if google
+                if (uri.getPath().contains("/oauth2/v4/token")) {
+                    return false;
+                }
+
+                // Do not open in other browser if google
+                if (uri.getPath().contains("/ServiceLogin")) {
+                    return false;
+                }
+
+                // Do not open in other browser if office365
+                if (uri.getPath().contains("/oauth2/v2.0/authorize")) {
+                    return false;
+                }
+
+                // Do not open in other browser if office365
+                if (uri.getPath().contains("/oauth2/v2.0/token")) {
+                    return false;
+                }
+
+                // Do not open in other browser if office365
+                if (uri.getPath().contains("/oauth20_authorize.srf")) {
+                    return false;
+                }
+
                 if (!uri.getHost().equalsIgnoreCase(appUri.getHost())) {
                     openUrl(uri);
                     return true;
