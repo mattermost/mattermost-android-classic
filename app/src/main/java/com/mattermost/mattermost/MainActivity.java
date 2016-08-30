@@ -215,8 +215,8 @@ public class MainActivity extends WebViewActivity {
                     return false;
                 }
 
-                // Do not open in other browser if google
-                if (uri.getPath().contains("/oauth2/v2/auth")) {
+                // Do not open in other browser if google, for v1 or v2
+                if (uri.getPath().contains("/oauth2/v2/auth") || uri.getPath().contains("/oauth2/auth")) {
                     return false;
                 }
 
@@ -227,6 +227,16 @@ public class MainActivity extends WebViewActivity {
 
                 // Do not open in other browser if google
                 if (uri.getPath().contains("/ServiceLogin")) {
+                    return false;
+                }
+
+                // Do not open in other browser if google and multiple accounts or MFA
+                if (uri.getPath().contains("/AccountChooser") || uri.getPath().contains("/signin/challenge")) {
+                    return false;
+                }
+
+                // Do not open in other browser if callback from google to gitlab
+                if (uri.getPath().contains("/users/auth/google_oauth2/callback")) {
                     return false;
                 }
 
