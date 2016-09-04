@@ -245,6 +245,11 @@ public class MainActivity extends WebViewActivity {
                     return false;
                 }
 
+                // Do not open in other browser if SAML
+                if (uri.getQuery() != null && uri.getQuery().contains("SAMLRequest")) {
+                    return false;
+                }
+
                 if (!uri.getHost().equalsIgnoreCase(appUri.getHost())) {
                     openUrl(uri);
                     return true;
