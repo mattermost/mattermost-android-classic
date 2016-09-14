@@ -1,5 +1,23 @@
 # Mattermost Android Application Changelog
 
+## Release v3.4.0  
+
+Release Date 2016-08-16
+
+### Improvements
+- Push notifications now stack when multiple notifications are received, and clear when the message is read elsewhere.
+
+### Bug Fixes
+- Added more exception URLs to fix issues with Google and SAML sign in.
+
+### Contributors
+
+Many thanks to all our contributors. In alphabetical order:
+
+- [coreyhulen](https://github.com/coreyhulen)
+- [enahum](https://github.com/enahum)
+- [jwilander](https://github.com/jwilander)
+
 ## Release v3.3.0  
 
 Released 2016-08-23
