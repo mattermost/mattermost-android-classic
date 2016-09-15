@@ -2,7 +2,7 @@
 
 ## Release v3.4.0  
 
-Release Date 2016-08-16
+Release Date 2016-09-16
 
 ### Improvements
 - Push notifications now stack when multiple notifications are received, and clear when the message is read elsewhere.
