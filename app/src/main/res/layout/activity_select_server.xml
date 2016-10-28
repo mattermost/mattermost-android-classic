@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true">
+        android:layout_alignParentStart="true">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -36,26 +36,24 @@
             android:layout_height="wrap_content">
 
             <RelativeLayout
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
-                android:layout_weight="0.7">
+                android:layout_weight="1">
 
                 <Spinner
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="0dp"
                     android:id="@+id/server_prefix"
                     android:layout_gravity="center_horizontal"
                     android:textAppearance="?android:attr/textAppearanceListItemSmall"
                     android:entries="@array/server_prefixs"
-                    />
+                    android:layout_centerVertical="true" />
 
             </RelativeLayout>
 
             <RelativeLayout
-                android:layout_weight="0.3"
+                android:layout_weight="0.45"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent">
 
@@ -64,14 +62,18 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/server_name"
                     android:layout_gravity="center_horizontal"
-                    android:layout_margin="10dp"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:hint="@string/team_url_hint"
                     android:text="@string/team_url"
                     android:imeOptions="actionGo"
-                    android:inputType="textUri|textNoSuggestions" />
+                    android:inputType="textUri|textNoSuggestions"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp" />
 
-            </RelativeLayout>
+            </RelativeLayout
+                android:layout_weight="0.5">
 
         </LinearLayout>
 
