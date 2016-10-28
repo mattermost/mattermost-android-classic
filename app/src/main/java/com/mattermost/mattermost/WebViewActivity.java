@@ -7,6 +7,8 @@ package com.mattermost.mattermost;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.DownloadManager;
+import android.app.DownloadManager.Request;
 import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -22,6 +24,7 @@ import android.view.View;
 import android.view.Window;
 import android.webkit.ConsoleMessage;
 import android.webkit.CookieManager;
+import android.webkit.DownloadListener;
 import android.webkit.JsResult;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
@@ -73,6 +76,8 @@ public class WebViewActivity extends AppActivity {
         settings.setDatabaseEnabled(true);
         settings.setMediaPlaybackRequiresUserGesture(false);
 
+        view.setDownloadListener(getDownloadListener());
+
         CookieManager cookies = CookieManager.getInstance();
         cookies.setAcceptCookie(true);
 
@@ -111,6 +116,32 @@ public class WebViewActivity extends AppActivity {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+
+    private DownloadListener getDownloadListener() {
+        return new DownloadListener() {
+            public void onDownloadStart(
+                String url,
+                String userAgent,
+                String contentDisposition,
+                String mimetype,
+                long contentLength
+            ) {
+                Uri uri = Uri.parse(url);
+                Request request = new Request(uri);
+                request.allowScanningByMediaScanner();
+                request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+                request.setTitle("File download from Mattermost");
+
+                String cookie = CookieManager.getInstance().getCookie(url);
+                if (cookie != null) {
+                    request.addRequestHeader("cookie", cookie);
+                }
+
+                DownloadManager dm = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
+                dm.enqueue(request);
+           }
+        };
     }
 
     @Override
