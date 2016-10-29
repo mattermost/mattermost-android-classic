@@ -230,6 +230,16 @@ public class MainActivity extends WebViewActivity {
                     return false;
                 }
 
+                // Do not open in other browser if third party cas
+                if (uri.getPath().contains("/cas/")) {
+                    return false;
+                }
+
+                // Do not open in other browser if gitlab + cas
+                if (uri.getPath().contains("/users/auth/cas3")) {
+                    return false;
+                }
+
                 // Do not open in other browser if google and multiple accounts or MFA
                 if (uri.getPath().contains("/AccountChooser") || uri.getPath().contains("/signin/challenge")) {
                     return false;
