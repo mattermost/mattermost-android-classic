@@ -16,11 +16,13 @@ import com.mattermost.service.jacksonconverter.JacksonConverterFactory;
 import com.mattermost.service.jacksonconverter.PromiseConverterFactory;
 import com.squareup.okhttp.MediaType;
 import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Protocol;
 import com.squareup.okhttp.ResponseBody;
 
 import java.net.CookiePolicy;
 import java.net.CookieStore;
 import java.util.List;
+import java.util.Arrays;
 
 import retrofit.Callback;
 import retrofit.Retrofit;
@@ -52,6 +54,7 @@ public class MattermostService {
 
         cookieStore = new WebkitCookieManagerProxy();
 
+        client.setProtocols(Arrays.asList(Protocol.HTTP_1_1));
         client.setCookieHandler(cookieStore);
         preferences = context.getSharedPreferences("App", Context.MODE_PRIVATE);
     }
