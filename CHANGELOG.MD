@@ -1,5 +1,29 @@
 # Mattermost Android Application Changelog
 
+## Release v3.5.0  
+
+Release Date 2016-11-16
+
+### Bug Fixes
+- Fixed push notifications sometimes not being delivered.
+- Removed the red loading circle in the center of the screen.
+- Changed `https://` sizing on the server page so it is not cut off on smaller screens.
+- Fixed an issue where the "download" link was not working for file attachments.
+- Screen rotation is now disabled to avoid styling errors.
+
+### Compatibility
+
+- Android Native App does not support HTTP2.
+
+### Contributors
+
+Many thanks to all our contributors. In alphabetical order:
+
+- [coreyhulen](https://github.com/coreyhulen)
+- [DavidLu1997](https://github.com/DavidLu1997)
+- [dmeza](https://github.com/dmeza)
+- [it33](https://github.com/it33)
+
 ## Release v3.4.0  
 
 Release Date 2016-09-16
