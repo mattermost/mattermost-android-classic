@@ -4,17 +4,6 @@
  */
 package com.mattermost.service;
 
-import android.app.Activity;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.os.Handler;
-import android.view.Gravity;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.PopupWindow;
-
-import com.mattermost.images.AnimatedCircleDrawable;
-import com.mattermost.mattermost.AppActivity;
 import com.mattermost.mattermost.MattermostApplication;
 
 import org.json.JSONObject;
@@ -23,7 +12,6 @@ import org.json.JSONTokener;
 import java.util.ArrayList;
 import java.util.List;
 
-import retrofit.Call;
 import retrofit.Callback;
 import retrofit.Response;
 import retrofit.Retrofit;
@@ -34,26 +22,6 @@ public class Promise<T> {
     private T result;
     private String error;
     private JSONObject errorJson;
-
-    PopupWindow busy = null;
-
-    public static PopupWindow show() {
-        Activity currentActivity = AppActivity.current;
-        PopupWindow pw = new PopupWindow(currentActivity);
-        pw.setFocusable(false);
-        pw.setBackgroundDrawable(new ColorDrawable(0));
-        ImageView img = new ImageView(currentActivity);
-        pw.setContentView(img);
-        View view = currentActivity.getWindow().getDecorView();
-        pw.setWidth(60);
-        pw.setHeight(60);
-        AnimatedCircleDrawable a = new AnimatedCircleDrawable(Color.RED, 5, Color.TRANSPARENT, 30);
-        img.setImageDrawable(a);
-        pw.showAtLocation(view, Gravity.LEFT | Gravity.TOP, view.getWidth() / 2 - 30, view.getHeight() / 2 - 30);
-        a.start();
-
-        return pw;
-    }
 
     public Promise() {
         next = new ArrayList<IResultListener<T>>();
@@ -98,32 +66,9 @@ public class Promise<T> {
     }
 
     public void onStarted() {
-        MattermostApplication.handler.post(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    busy = show();
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-            }
-        });
     }
 
     void onResult(T r, String error) {
-        MattermostApplication.handler.post(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    if (busy != null) {
-                        busy.dismiss();
-                    }
-                    busy = null;
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-            }
-        });
 
         result = r;
 
