@@ -36,9 +36,8 @@
             android:layout_height="wrap_content">
 
             <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:layout_weight="1">
+                android:layout_width="128dp"
+                android:layout_height="fill_parent">
 
                 <Spinner
                     android:layout_width="fill_parent"
@@ -70,7 +69,8 @@
                     android:layout_marginLeft="0dp"
                     android:layout_marginRight="0dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp" />
+                    android:layout_marginBottom="10dp"
+                    android:layout_alignParentEnd="true" />
             </RelativeLayout>
 
         </LinearLayout>
