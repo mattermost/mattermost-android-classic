@@ -20,6 +20,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Protocol;
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
+import retrofit2.converter.moshi.MoshiConverterFactory;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
@@ -80,7 +81,7 @@ public class MattermostService {
         Retrofit.Builder builder = new Retrofit.Builder();
         builder.baseUrl(baseUrl);
         builder.client(client);
-        builder.addConverterFactory(JacksonConverterFactory.create());
+        builder.addConverterFactory(MoshiConverterFactory.create());
         builder.addCallAdapterFactory(PromiseConverterFactory.create());
 
         retrofit = builder.build();
