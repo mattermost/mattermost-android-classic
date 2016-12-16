@@ -2,23 +2,17 @@
  * Copyright (c) 2016 Mattermost, Inc. All Rights Reserved.
  * See License.txt for license information.
  */
-package com.mattermost.service.jacksonconverter;
-
-import com.fasterxml.jackson.databind.type.TypeFactory;
-import com.mattermost.service.Promise;
+package com.mattermost.service;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
-import retrofit.Call;
-import retrofit.CallAdapter;
-import retrofit.Callback;
-import retrofit.Converter;
-import retrofit.Response;
-import retrofit.Retrofit;
+import retrofit2.Call;
+import retrofit2.CallAdapter;
+import retrofit2.Retrofit;
 
-public class PromiseConverterFactory implements CallAdapter.Factory {
+public class PromiseConverterFactory extends CallAdapter.Factory {
 
     public static PromiseConverterFactory create() {
         return new PromiseConverterFactory();
@@ -27,10 +21,9 @@ public class PromiseConverterFactory implements CallAdapter.Factory {
     @Override
     public CallAdapter<?> get(final Type returnType, Annotation[] annotations, Retrofit retrofit) {
 
-        Class<?> cls = TypeFactory.rawClass(returnType);
+        Class<?> cls = getRawType(returnType);
 
-        if (!Promise.class.isAssignableFrom(cls))
-            return null;
+        if (!Promise.class.isAssignableFrom(cls)) { return null; }
 
         if (!(returnType instanceof ParameterizedType)) {
             throw new IllegalStateException(

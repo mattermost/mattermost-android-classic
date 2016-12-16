@@ -7,30 +7,23 @@ package com.mattermost.service;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import android.util.Log;
 
 import com.mattermost.mattermost.R;
-import com.mattermost.model.User;
 import com.mattermost.model.InitialLoad;
-import com.mattermost.service.jacksonconverter.JacksonConverterFactory;
-import com.mattermost.service.jacksonconverter.PromiseConverterFactory;
-import com.squareup.okhttp.MediaType;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Protocol;
-import com.squareup.okhttp.ResponseBody;
+import com.mattermost.model.User;
 
-import java.net.CookiePolicy;
-import java.net.CookieStore;
-import java.util.List;
-import java.util.Arrays;
+import java.util.Collections;
 
-import retrofit.Callback;
-import retrofit.Retrofit;
-import retrofit.http.Headers;
-import retrofit.http.Body;
-import retrofit.http.POST;
-import retrofit.http.GET;
-
+import okhttp3.JavaNetCookieJar;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Protocol;
+import retrofit2.Retrofit;
+import retrofit2.converter.jackson.JacksonConverterFactory;
+import retrofit2.http.Body;
+import retrofit2.http.GET;
+import retrofit2.http.Headers;
+import retrofit2.http.POST;
 
 
 public class MattermostService {
@@ -40,7 +33,7 @@ public class MattermostService {
     private final WebkitCookieManagerProxy cookieStore;
 
     private final Context context;
-    private final OkHttpClient client = new OkHttpClient();
+    private final OkHttpClient client;
 
     private Retrofit retrofit;
     private MattermostAPI apiClient;
@@ -54,8 +47,10 @@ public class MattermostService {
 
         cookieStore = new WebkitCookieManagerProxy();
 
-        client.setProtocols(Arrays.asList(Protocol.HTTP_1_1));
-        client.setCookieHandler(cookieStore);
+        client = new OkHttpClient.Builder()
+                .protocols(Collections.singletonList(Protocol.HTTP_1_1))
+                .cookieJar(new JavaNetCookieJar(cookieStore))
+                .build();
         preferences = context.getSharedPreferences("App", Context.MODE_PRIVATE);
     }
 

@@ -12,9 +12,9 @@ import org.json.JSONTokener;
 import java.util.ArrayList;
 import java.util.List;
 
-import retrofit.Callback;
-import retrofit.Response;
-import retrofit.Retrofit;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Promise<T> {
 
@@ -33,8 +33,9 @@ public class Promise<T> {
 
     public Callback<T> callback() {
         return new Callback<T>() {
-            public void onResponse(final Response<T> response, Retrofit retrofit) {
-                if (response.isSuccess()) {
+            @Override
+            public void onResponse(Call<T> call, Response<T> response) {
+                if (response.isSuccessful()) {
                     onResult(response.body(), null);
                 } else {
                     try {
@@ -46,7 +47,7 @@ public class Promise<T> {
             }
 
             @Override
-            public void onFailure(Throwable t) {
+            public void onFailure(Call<T> call, Throwable t) {
                 onResult(null, MattermostApplication.toString(t));
             }
         };
