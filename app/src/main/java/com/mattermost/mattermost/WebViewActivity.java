@@ -77,10 +77,10 @@ public class WebViewActivity extends AppActivity {
 
         final File dir = this.getExternalCacheDir();
         settings.setAppCacheMaxSize(1024*1024*20);
-        settings.setCacheMode(WebSettings.LOAD_DEFAULT);
         settings.setAppCachePath(dir.getAbsolutePath());
         settings.setAllowFileAccess(true);
         settings.setAppCacheEnabled(true);
+        settings.setCacheMode(WebSettings.LOAD_DEFAULT);
         view.setDownloadListener(getDownloadListener());
 
         CookieManager cookies = CookieManager.getInstance();
