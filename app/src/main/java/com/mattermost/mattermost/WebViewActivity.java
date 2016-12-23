@@ -75,9 +75,10 @@ public class WebViewActivity extends AppActivity {
         settings.setDatabaseEnabled(true);
         settings.setMediaPlaybackRequiresUserGesture(false);
 
-        final String appCachePath = this.getExternalCacheDir().getAbsolutePath();
+        final File dir = this.getExternalCacheDir();
+        settings.setAppCacheMaxSize(1024*1024*20);
         settings.setCacheMode(WebSettings.LOAD_DEFAULT);
-        settings.setAppCachePath(appCachePath);
+        settings.setAppCachePath(dir.getAbsolutePath());
         settings.setAllowFileAccess(true);
         settings.setAppCacheEnabled(true);
         view.setDownloadListener(getDownloadListener());
