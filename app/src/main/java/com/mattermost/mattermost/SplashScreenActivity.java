@@ -42,12 +42,13 @@ public class SplashScreenActivity extends AppActivity {
     private void enableHttpResponseCache() {
         try {
             long httpCacheSize = 20 * 1024 * 1024; // 20 MiB
-            File httpCacheDir = new File(getCacheDir(), "http");
+            File httpCacheDir = new File(getExternalCacheDir(), "http");
             Class.forName("android.net.http.HttpResponseCache")
                     .getMethod("install", File.class, long.class)
                     .invoke(null, httpCacheDir, httpCacheSize);
+            Log.i("HTTP", httpCacheDir.getAbsolutePath());
         } catch (Exception httpResponseCacheNotAvailable) {
-            Log.d("HTTP", "HTTP response cache is unavailable.");
+            Log.e("HTTP", "HTTP response cache is unavailable.");
         }
     }
 }
