@@ -202,8 +202,8 @@ public class MainActivity extends WebViewActivity {
                 }
                 
                 if (url.startsWith("tel:")) {
-                    Intent intent = new Intent(Intent.ACTION_DIAL, uri);
-                    startActivity(intent);
+                    Intent i = new Intent(Intent.ACTION_DIAL, uri);
+                    startActivity(i);
                     return true;
                 }
                 
