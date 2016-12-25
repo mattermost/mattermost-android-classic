@@ -194,7 +194,7 @@ public class MainActivity extends WebViewActivity {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 Uri uri = Uri.parse(url);
-                
+
                 if (url.startsWith("mailto:")) {
                     Intent i = new Intent(Intent.ACTION_SENDTO, uri);
                     startActivity(i);
