@@ -196,6 +196,18 @@ public class MainActivity extends WebViewActivity {
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 Uri uri = Uri.parse(url);
 
+                if (url.startsWith("mailto:")) {
+                    Intent i = new Intent(Intent.ACTION_SENDTO, uri);
+                    startActivity(i);
+                    return true;
+                }
+                
+                if (url.startsWith("tel:")) {
+                    Intent i = new Intent(Intent.ACTION_DIAL, uri);
+                    startActivity(i);
+                    return true;
+                }
+                
                 // Do not open in other browser if gitlab
                 if (uri.getPath().contains("/oauth/authorize")) {
                     return false;
