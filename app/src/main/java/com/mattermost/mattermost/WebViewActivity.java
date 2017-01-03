@@ -72,10 +72,15 @@ public class WebViewActivity extends AppActivity {
         settings.setJavaScriptEnabled(true);
         settings.setDomStorageEnabled(true);
         settings.setUserAgentString(settings.getUserAgentString() + " Web-Atoms-Mobile-WebView");
-        settings.setCacheMode(WebSettings.LOAD_DEFAULT);
         settings.setDatabaseEnabled(true);
         settings.setMediaPlaybackRequiresUserGesture(false);
 
+        final File dir = this.getExternalCacheDir();
+        settings.setAppCacheMaxSize(1024*1024*20);
+        settings.setAppCachePath(dir.getAbsolutePath());
+        settings.setAllowFileAccess(true);
+        settings.setAppCacheEnabled(true);
+        settings.setCacheMode(WebSettings.LOAD_DEFAULT);
         view.setDownloadListener(getDownloadListener());
 
         CookieManager cookies = CookieManager.getInstance();
