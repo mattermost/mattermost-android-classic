@@ -348,9 +348,7 @@ public class MainActivity extends WebViewActivity {
 
         MattermostService.service.logout();
 
-        Intent intent = new Intent(this, SelectServerActivity.class);
-        startActivityForResult(intent, SelectServerActivity.START_CODE);
-        finish();
+        super.onBackPressed();
     }
 
 
