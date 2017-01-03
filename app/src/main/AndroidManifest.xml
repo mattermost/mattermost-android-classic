@@ -30,9 +30,9 @@
     <uses-permission android:name="com.majeur.launcher.permission.UPDATE_BADGE" />
 
     <permission
-        android:name="com.mattermost.mattermost.permission.C2D_MESSAGE"
+        android:name="${applicationId}.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
-    <uses-permission android:name="com.mattermost.mattermost.permission.C2D_MESSAGE" />
+    <uses-permission android:name="${applicationId}.permission.C2D_MESSAGE" />
 
     <application
         android:name=".MattermostApplication"
@@ -79,7 +79,7 @@
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
                 <!-- for Gingerbread GSF backward compat -->
                 <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
-                <category android:name="com.mattermost.mattermost" />
+                <category android:name="${applicationId}" />
             </intent-filter>
         </receiver>
 
