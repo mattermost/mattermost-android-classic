@@ -4,6 +4,11 @@ Mattermost Android Application for use with Mattermost server 3.0 and higher (ht
 
 You can download a compiled version of the latest release from [Google Play.](https://about.mattermost.com/downloads/) 
 
+**Note:**
+We are working on [new mobile apps](https://github.com/mattermost/mattermost-mobile) using React Native to replace this application. This repo is in maintenance mode, so only bug fixes will be accepted.
+
+---
+
 #### Beta Testing
 
 - Please see [Mattermost Android App testing documentation](https://github.com/mattermost/android/blob/master/TESTING.md) for how to help test new releases.
