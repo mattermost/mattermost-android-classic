@@ -1,5 +1,25 @@
 # Mattermost Android Application Changelog
 
+## Release v3.6.0  
+
+Release Date 2017-01-16
+
+### Bug Fixes
+- Enabled hardware acceleration to improve rendering performance
+- Fixed issue where mailto links crashed the app
+- Fixed changing servers on the Android app 
+- Adjusted sizing of the http/https dropdown on the server selection screen
+
+### Contributors
+
+Many thanks to all our contributors. In alphabetical order:
+
+- [CometKim](https://github.com/CometKim)
+- [coreyhulen](https://github.com/coreyhulen)
+- [DavidLu1997](https://github.com/DavidLu1997)
+- [dmeza](https://github.com/dmeza)
+- [esethna](https://github.com/esethna)
+
 ## Release v3.5.0  
 
 Release Date 2016-11-16
