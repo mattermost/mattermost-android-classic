@@ -1,5 +1,18 @@
 # Mattermost Android Application Changelog
 
+## Release v3.9.0
+
+Release Date 2017-05-22
+
+### Improvements
+- Added support for Chromebooks
+
+### Contributors
+
+Many thanks to all our contributors. In alphabetical order:
+
+- [der-test](https://github.com/der-test)
+
 ## Release v3.6.0  
 
 Release Date 2017-01-16
