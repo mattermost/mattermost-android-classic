@@ -12,8 +12,8 @@ android {
          * convert application icon to meet desired lollipop guidelines, that is icon should be
          * flat and white*/
         targetSdkVersion 20
-        versionCode 390
-        versionName "3.9.0"
+        versionCode 395
+        versionName "3.10.0"
     }
     buildTypes {
         release {

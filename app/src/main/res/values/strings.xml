@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Mattermost</string>
+    <string name="app_name">Mattermost Classic</string>
     <string name="app_user_agent">com.mattermost.android</string>
     <string name="welcome_text">Enter Mattermost Server URL</string>
     <string name="error_server_url_empty">Server URL cannot be empty</string>

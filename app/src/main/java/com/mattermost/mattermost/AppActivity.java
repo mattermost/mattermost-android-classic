@@ -25,7 +25,7 @@ public class AppActivity extends AppCompatActivity {
 
     public static void alert(String s, final DialogInterface.OnClickListener listener) {
         AlertDialog dialog = (new AlertDialog.Builder(current))
-                .setTitle("Mattermost")
+                .setTitle("Mattermost Classic")
                 .setMessage("Email sent with reset link")
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
