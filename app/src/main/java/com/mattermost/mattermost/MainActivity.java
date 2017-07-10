@@ -273,6 +273,11 @@ public class MainActivity extends WebViewActivity {
                     return false;
                 }
 
+                // Do not open in other browser if login
+                if (uri.getPath().contains("/login")) {
+                    return false;
+                }
+
                 if (!uri.getHost().equalsIgnoreCase(appUri.getHost())) {
                     openUrl(uri);
                     return true;
