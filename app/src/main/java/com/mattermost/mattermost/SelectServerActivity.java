@@ -15,7 +15,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.mattermost.model.InitialLoad;
+//import com.mattermost.model.InitialLoad;
+import com.mattermost.model.Ping;
 import com.mattermost.service.IResultListener;
 import com.mattermost.service.MattermostService;
 import com.mattermost.service.Promise;
@@ -93,16 +94,31 @@ public class SelectServerActivity extends AppActivity {
             return;
         }
 
-        MattermostService.service.initialLoad()
-                .then(new IResultListener<InitialLoad>() {
+        MattermostService.service.pingV4()
+                .then(new IResultListener<Ping>() {
                     @Override
-                    public void onResult(Promise<InitialLoad> promise) {
+                    public void onResult(Promise<Ping> promise) {
                         if (promise.getError() != null) {
-                            MattermostService.service.removeBaseUrl();
-                            errorMessage.setText(R.string.error_mattermost_server);
-                            Log.e("Error", promise.getError());
+                            MattermostService.service.pingV3()
+                                    .then(new IResultListener<Ping>() {
+                                        @Override
+                                        public void onResult(Promise<Ping> promise) {
+                                            if (promise.getError() != null) {
+                                                MattermostService.service.removeBaseUrl();
+                                                errorMessage.setText(R.string.error_mattermost_server);
+                                                Log.e("Error", promise.getError());
+                                            } else {
+                                                errorMessage.setText("");
+                                                MattermostService.service.init(server);
+                                                Intent intent = new Intent(SelectServerActivity.this, MainActivity.class);
+                                                startActivity(intent);
+                                                finish();
+                                            }
+                                        }
+                                    });
                         } else {
                             errorMessage.setText("");
+                            MattermostService.service.SetV4();
                             MattermostService.service.init(server);
                             Intent intent = new Intent(SelectServerActivity.this, MainActivity.class);
                             startActivity(intent);
