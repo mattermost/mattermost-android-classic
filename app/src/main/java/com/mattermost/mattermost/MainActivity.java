@@ -224,6 +224,11 @@ public class MainActivity extends WebViewActivity {
                 }
 
                 // Do not open in other browser if gitlab
+                if (uri.getPath().contains("/api/v4/user")) {
+                    return false;
+                }
+
+                // Do not open in other browser if gitlab
                 if (uri.getPath().contains("/users/sign_in")) {
                     return false;
                 }

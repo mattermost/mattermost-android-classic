@@ -11,6 +11,7 @@ import android.util.Log;
 
 import com.mattermost.mattermost.R;
 import com.mattermost.model.User;
+import com.mattermost.model.Ping;
 import com.mattermost.model.InitialLoad;
 import com.mattermost.service.jacksonconverter.JacksonConverterFactory;
 import com.mattermost.service.jacksonconverter.PromiseConverterFactory;
@@ -94,27 +95,9 @@ public class MattermostService {
         if (url.endsWith("/")) {
             url = url.substring(0, url.length() - 1);
         }
-//        int i = url.lastIndexOf("/");
-//        if (i != -1) {
-//            String team = url.substring(i + 1);
-//            setTeam(team);
-//        }
 
         apiClient = retrofit.create(MattermostAPI.class);
     }
-
-//    public Promise<User> login(String email, String password) {
-//        User user = new User();
-//        user.name = getTeam();
-//        user.email = email;
-//        user.password = password;
-//
-//        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-//        String deviceId = sharedPreferences.getString("device_id", null);
-//        user.deviceId = "android:" + deviceId.toString();
-//
-//        return apiClient.login(user);
-//    }
 
     public Promise<User> attachDevice() {
         User user = new User();
@@ -127,51 +110,29 @@ public class MattermostService {
 
         user.deviceId = "android:" + deviceId.toString();
 
-        return apiClient.attachDevice(user);
+        if (this.isV4()) {
+            return apiClient.attachDeviceV3(user);
+        } else{
+            return apiClient.attachDeviceV3(user);
+        }
     }
 
-    public Promise<InitialLoad> initialLoad() {
-        return apiClient.initialLoad();
+
+    public Promise<Ping> pingV4() {
+        return apiClient.pingV4();
     }
 
-//    public Promise<Boolean> findTeamByName(String name) {
-//        User user = new User();
-//        user.name = name;
-//        return apiClient.findTeamByName(user);
-//    }
-//
-//    public Promise<User> signup(String email, String name) {
-//        User user = new User();
-//        user.email = email;
-//        user.name = name;
-//        return apiClient.signup(user);
-//    }
-//
-//
-//
-//    public Promise<User> forgotPassword(String emailAddress) {
-//        User user = new User();
-//        user.email = emailAddress;
-//        return apiClient.sendPaswordReset(user);
-//    }
+    public Promise<Ping> pingV3() {
+        return apiClient.pingV3();
+    }
 
-//    public String getTeam() {
-//        if (team == null) {
-//            team = preferences.getString("Team", "");
-//        }
-//
-//        return team;
-//    }
-//
-//    public void setTeam(String name) {
-//        if (name == null) {
-//            preferences.edit().remove("Team").commit();
-//        } else {
-//            preferences.edit().putString("Team", name).commit();
-//        }
-//
-//        team = name;
-//    }
+    public boolean isV4() {
+        return "true".equals(preferences.getString("V4", "false"));
+    }
+
+    public void SetV4() {
+        preferences.edit().putString("V4", "true").commit();
+    }
 
     public boolean isAttached() {
         return "true".equals(preferences.getString("AttachedId", "false"));
@@ -199,6 +160,7 @@ public class MattermostService {
         preferences.edit().remove("baseUrl").commit();
         preferences.edit().remove("loggedIn").commit();
         preferences.edit().remove("LastPath").commit();
+        preferences.edit().remove("V4").commit();
         cookieStore.clear();
     }
 
@@ -206,25 +168,18 @@ public class MattermostService {
 
         @Headers("X-Requested-With: XMLHttpRequest")
         @POST("/api/v3/users/attach_device")
-        Promise<User> attachDevice(@Body User user);
+        Promise<User> attachDeviceV3(@Body User user);
 
         @Headers("X-Requested-With: XMLHttpRequest")
-        @GET("/api/v3/users/initial_load")
-        Promise<InitialLoad> initialLoad();
+        @POST("/api/v4/users/attach_device")
+        Promise<User> attachDeviceV4(@Body User user);
 
-//        @POST("/api/v1/users/login")
-//        Promise<User> login(@Body User user);
-//
-//        @POST("/api/v1/users/send_password_reset")
-//        Promise<User> sendPaswordReset(@Body User user);
-//
-//        @POST("/api/v1/teams/find_team_by_name")
-//        Promise<Boolean> findTeamByName(@Body User user);
-//
-//        @POST("/api/v1/teams/email_teams")
-//        Promise<List<User>> findTeams(@Body User user);
-//
-//        @POST("/api/v1/teams/signup")
-//        Promise<User> signup(@Body User user);
+        @Headers("X-Requested-With: XMLHttpRequest")
+        @GET("/api/v4/system/ping")
+        Promise<Ping> pingV4();
+
+        @Headers("X-Requested-With: XMLHttpRequest")
+        @GET("/api/v3/general/ping")
+        Promise<Ping> pingV3();
     }
 }
