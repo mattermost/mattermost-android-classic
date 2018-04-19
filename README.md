@@ -1,12 +1,12 @@
 # Mattermost Android Application 
 
+**Note:**
+[New mobile apps](https://github.com/mattermost/mattermost-mobile) using React Native have replaced this application. This repo is in maintenance mode, so only bug fixes will be accepted. 
+
 Mattermost Android Application for use with Mattermost server 3.0 and higher (http://www.mattermost.org/download/).
 
 - You can download a compiled version of the latest release from [Google Play.](https://about.mattermost.com/downloads/) 
 - You can download a compiled APK file for local usage from the [Releases Tab](https://github.com/mattermost/android/releases). 
-
-**Note:**
-We are working on [new mobile apps](https://github.com/mattermost/mattermost-mobile) using React Native to replace this application. This repo is in maintenance mode, so only bug fixes will be accepted.
 
 ---
 
