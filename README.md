@@ -17,7 +17,7 @@ Mattermost Android Application for use with Mattermost server 3.0 and higher (ht
 #### Supported Platforms 
 
 - See [listing of verified Android devices](DEVICES.md) on which this application has been manually tested.
-- Minimum required Android operating system is 4.4.2+ with Google Play Services enabled.
+- Minimum required Android operating system is 4.4.2+.
 
 #### Requirements for Deployment 
 
