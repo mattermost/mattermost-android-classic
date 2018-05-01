@@ -5,7 +5,8 @@
 
 Mattermost Android Application for use with Mattermost server 3.0 and higher (http://www.mattermost.org/download/).
 
-- You can download a compiled version of the latest release from [Google Play.](https://about.mattermost.com/downloads/) 
+- You can download a compiled version of the latest release from [Google Play](https://play.google.com/store/apps/details?id=com.mattermost.mattermost).
+- You can download a compiled version of the latest release from [F-Droid](https://f-droid.org/packages/com.mattermost.mattermost/).
 - You can download a compiled APK file for local usage from the [Releases Tab](https://github.com/mattermost/android/releases). 
 
 ---
