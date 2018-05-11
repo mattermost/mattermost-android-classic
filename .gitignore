@@ -17,3 +17,4 @@ proguard/
 captures/
 signing-key.jks
 google-services.json
+app/release/
