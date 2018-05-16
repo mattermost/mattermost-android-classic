@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion "26.0.2"
+    buildToolsVersion '27.0.3'
 
     defaultConfig {
         applicationId "com.mattermost.mattermost"
@@ -12,8 +12,8 @@ android {
          * convert application icon to meet desired lollipop guidelines, that is icon should be
          * flat and white*/
         targetSdkVersion 20
-        versionCode 398
-        versionName "3.10.2"
+        versionCode 399
+        versionName "3.10.3"
     }
     buildTypes {
         release {

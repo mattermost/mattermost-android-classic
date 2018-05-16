@@ -31,6 +31,7 @@ import retrofit.http.Headers;
 import retrofit.http.Body;
 import retrofit.http.POST;
 import retrofit.http.GET;
+import retrofit.http.PUT;
 
 
 
@@ -111,7 +112,7 @@ public class MattermostService {
         user.deviceId = "android:" + deviceId.toString();
 
         if (this.isV4()) {
-            return apiClient.attachDeviceV3(user);
+            return apiClient.attachDeviceV4(user);
         } else{
             return apiClient.attachDeviceV3(user);
         }
@@ -171,7 +172,7 @@ public class MattermostService {
         Promise<User> attachDeviceV3(@Body User user);
 
         @Headers("X-Requested-With: XMLHttpRequest")
-        @POST("/api/v4/users/attach_device")
+        @PUT("/api/v4/users/sessions/device")
         Promise<User> attachDeviceV4(@Body User user);
 
         @Headers("X-Requested-With: XMLHttpRequest")
